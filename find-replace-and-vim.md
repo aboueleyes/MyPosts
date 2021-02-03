@@ -31,7 +31,7 @@ Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
 #### Case Sensitivity 
 
 `:%s/foo/bar/gci`
-Change each 'foo' (case insens:%s/foo\c/bar/gcitive due to the i flag) to 'bar'; ask for confirmation.
+Change each 'foo' (case insensitive due to the i flag) to 'bar'; ask for confirmation.
 
 Another way to force ignore case is to append `\c` after the search pattern. For example, `/Linux\c` performs ignore case search.
 
@@ -48,5 +48,18 @@ For example, to substitute all occurrences of ‘foo’ to ‘bar’ in all line
 ```
 The range is inclusive, which means that the first and last lines are included in the range.
 The dot `.` character indicates the current line and `$` - the dollar sign the last line. To substitute ‘foo’ in all lines starting from the current line to the last one:
+
+``` vim Script
+:.,$s/foo/bar/
+```
+
+The line specifier can also be set using the ‘+’ or ‘-’ symbol,followed by a number that is added or subtracted from the preceding line number. If the number after the symbol is omitted, it defaults to 1.
+
+For example to substitute each ‘foo’ with ‘bar’ starting from the current line and the five next lines, type:
+
+``` vim Script
+:.,+5s/foo/bar/g
+```
+
 
 
