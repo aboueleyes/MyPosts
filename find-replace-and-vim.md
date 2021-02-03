@@ -31,6 +31,21 @@ Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
 #### Case Sensitivity 
 
 `:%s/foo/bar/gci`
-Change each 'foo' (case insensitive due to the i flag) to 'bar'; ask for confirmation.
+Change each 'foo' (case insens:%s/foo\c/bar/gcitive due to the i flag) to 'bar'; ask for confirmation.
 
 Another way to force ignore case is to append `\c` after the search pattern. For example, `/Linux\c` performs ignore case search.
+
+`:%s/foo\c/bar/gc` is same as the above 
+
+### Search Range 
+
+When no range is specified the substitute command operates only in the current line.
+
+The range can be either one line or a range between two lines. The line specifiers are separated with the , or ; characters. The range can be specified using the absolute line number or special symbols.
+
+For example, to substitute all occurrences of ‘foo’ to ‘bar’ in all lines starting from line 7 to line 13 you would use:
+
+```vim Script
+:3,10s/foo/bar/g
+```
+
