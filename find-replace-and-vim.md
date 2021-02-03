@@ -61,5 +61,33 @@ For example to substitute each ‘foo’ with ‘bar’ starting from the curren
 :.,+5s/foo/bar/g
 ```
 
+When compiled with +visual, change each 'foo' to 'bar' for all lines within a visual selection. Vim automatically appends the visual selection range ('<,'>) for any ex command when you select an area and enter :.
 
+``` vim Script
+:'<,'>s/foo/bar/g	
+```
+
+## Examples
+
+Comment lines (add # before the line) from 15 to 20:
+
+``` vim Script
+:15,20s/^/#/
+```
+
+Uncomment lines (remove # before the line) from 15 to 20:
+``` vim Script
+:5,20s/^#//
+```
+Replace each match of the last search pattern with 'bar'.
+For example, you might first place the cursor on the word foo then press * to search for that word.
+The above substitute would then change all words exactly matching 'foo' to 'bar'.
+
+``` vim Script
+:%s//bar/g
+```
+On each line, replace the last occurrence of "foo" with "bar".
+``` vim Script
+:%s/.*\zsfoo/bar/
+```
 
