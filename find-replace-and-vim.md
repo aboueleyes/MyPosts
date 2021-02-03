@@ -15,6 +15,7 @@ The command searches each line in `[range]` for a `{pattern}`, and replaces it w
 If no `[range`] and `[count]` are given, only the pattern found in the current line is replaced. The current line is the line where the cursor is placed.
 
 ### Examples 
+
 `:s/foo/bar/g`
 Find each occurrence of 'foo' (in the current line only), and replace it with 'bar'.
 
@@ -27,4 +28,9 @@ Change each 'foo' to 'bar', but ask for confirmation first.
 `:%s/\<foo\>/bar/gc`
 Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.
 
+#### Case Sensitivity 
 
+`:%s/foo/bar/gci`
+Change each 'foo' (case insensitive due to the i flag) to 'bar'; ask for confirmation.
+
+Another way to force ignore case is to append `\c` after the search pattern. For example, `/Linux\c` performs ignore case search.
