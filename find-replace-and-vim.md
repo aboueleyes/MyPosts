@@ -40,12 +40,13 @@ Another way to force ignore case is to append `\c` after the search pattern. For
 ### Search Range 
 
 When no range is specified the substitute command operates only in the current line.
-
 The range can be either one line or a range between two lines. The line specifiers are separated with the , or ; characters. The range can be specified using the absolute line number or special symbols.
-
 For example, to substitute all occurrences of ‘foo’ to ‘bar’ in all lines starting from line 7 to line 13 you would use:
 
 ```vim Script
-:3,10s/foo/bar/g
+:7,13s/foo/bar/g
 ```
+The range is inclusive, which means that the first and last lines are included in the range.
+The dot `.` character indicates the current line and `$` - the dollar sign the last line. To substitute ‘foo’ in all lines starting from the current line to the last one:
+
 
